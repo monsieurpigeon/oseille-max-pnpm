@@ -14,10 +14,6 @@ jobs:
           username: nologin
           password: ${{ secrets.SECRET_KEY }}
           registry: ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}
-      - name: "Create env file"
-        run: |
-          touch ./client/.env
-          echo "${{ secrets.ENV_FILE_CLIENT }}" > ./client/.env
       - name: Build the CLIENT Docker image
         run: docker build ./client -t ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/client
       - name: Push the CLIENT Docker Image
@@ -49,7 +45,7 @@ jobs:
         uses: httptoolkit/deploy-scaleway-serverless-container-action@v1
         with:
           timeout_seconds: 300
-          container_id: fe605032-72a7-48df-94f3-e9b789fa8587
+          container_id: d3ba0436-8844-4e73-a119-a5fcfb6403b0
           secret_key: ${{ secrets.SECRET_KEY }}
           registry_image_url: ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/client:latest
   deploy-server:
@@ -64,6 +60,6 @@ jobs:
         uses: httptoolkit/deploy-scaleway-serverless-container-action@v1
         with:
           timeout_seconds: 300
-          container_id: 760d0e0e-2430-45bc-9437-3a685118de14
+          container_id: f1d72a42-528a-46c8-9067-23cc5c657727
           secret_key: ${{ secrets.SECRET_KEY }}
           registry_image_url: ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/server:latest
