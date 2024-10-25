@@ -13,7 +13,12 @@ function App() {
     fetchData();
   }, []);
 
-  return <>{data && <pre>{JSON.stringify(data, null, 2)}</pre>}</>;
+  return (
+    <div>
+      <div>{import.meta.env.VITE_TEST_VAR}</div>
+      {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+    </div>
+  );
 }
 
 export default App;
