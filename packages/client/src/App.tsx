@@ -16,7 +16,9 @@ function App() {
   return (
     <div>
       <div>{import.meta.env.VITE_TEST_VAR}</div>
-      <div>{import.meta.env.PROD ? "PRODUCTION" : "PAS PRODUCTION"}</div>
+      <div>MODE : {import.meta.env.MODE}</div>
+      <div>SSR : {import.meta.env.SSR ? "SSR" : "PAS SSR"}</div>
+      <div>PROD : {import.meta.env.PROD ? "PRODUCTION" : "PAS PRODUCTION"}</div>
       {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
     </div>
   );
