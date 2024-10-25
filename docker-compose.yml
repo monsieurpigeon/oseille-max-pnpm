@@ -1,0 +1,14 @@
+services:
+  client:
+    build: ./packages/client
+    container_name: client_c
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=docker
+
+  server:
+    build: ./packages/server
+    container_name: server_c
+    ports:
+      - "3333:3333"
