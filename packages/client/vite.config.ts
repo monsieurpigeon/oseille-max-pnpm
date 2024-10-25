@@ -11,11 +11,12 @@ export default defineConfig({
     origin: "http://0.0.0.0:8080",
     proxy: {
       "/api": {
-        target: process.env.PROD
-          ? "https://rocinanteqfp7qmyc-server.functions.fnc.fr-par.scw.cloud"
-          : process.env.NODE_ENV === "docker"
-          ? "http://server_c:3333"
-          : "http://localhost:3333",
+        target:
+          process.env.QUASI_PROD === "oui"
+            ? "https://rocinanteqfp7qmyc-server.functions.fnc.fr-par.scw.cloud"
+            : process.env.NODE_ENV === "docker"
+            ? "http://server_c:3333"
+            : "http://localhost:3333",
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api/, ""),
       },
